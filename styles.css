@@ -76,7 +76,7 @@ a { color: var(--accent); text-underline-offset: 0.18em; }
 a:hover { text-decoration-thickness: 2px; }
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
 
-.container { width: 100%; max-width: var(--max); margin: 0 auto; padding: 0 1.25rem; }
+.container { width: 100%; max-width: var(--max); margin: 0 auto; padding-inline: 1.25rem; }
 
 .skip-link { position: absolute; left: -999px; top: 0; }
 .skip-link:focus { left: 1rem; top: 1rem; background: var(--surface); padding: .5rem 1rem; z-index: 10; }
@@ -179,10 +179,11 @@ nav { margin-left: auto; overflow-x: auto; }
 /* ---------- 7. Handy ---------- */
 @media (max-width: 640px) {
   body { font-size: 1rem; }
-  .container { padding: 0 1rem; }
+  .container { padding-inline: 1rem; }
   .hero { padding-top: 3rem; }
   .nav-list { gap: 1rem; }
-  .nav-list li:nth-child(4) { display: none; } /* "Education" ausblenden, damit die Leiste passt */
+  /* "Experience" und "Education" ausblenden, damit die Leiste aufs Handy passt */
+  .nav-list li:nth-child(2), .nav-list li:nth-child(4) { display: none; }
   .timeline li { grid-template-columns: 1fr; gap: .25rem; }
   .project { padding: 1.25rem; }
 }
