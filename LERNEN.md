@@ -38,17 +38,16 @@ Ganz oben in `styles.css` stehen die **Design-Tokens**, z. B. `--accent: #1f4e5f
 Ändere dort eine Farbe, und sie ändert sich überall. Das ist das wichtigste Prinzip von gutem CSS:
 Werte einmal festlegen, überall wiederverwenden.
 
-## Noch zu erledigen (rot gewellt auf der Seite)
+## CV aktualisieren
 
-1. **Kontakt**: In `index.html` unter `CONTACT` deine E-Mail und dein LinkedIn eintragen
-   und danach `class="todo-link"` entfernen.
-2. **CV-PDF**: Ich habe eine Kopie deines CVs **ohne Telefonnummer und Adresse** angelegt:
-   `Desktop/Bewerbungsunterlagen aktuell/Lebenslauf/00_AKTUELLE VORLAGEN/LF_CV_Website_public.docx`.
-   Öffne sie in Word, prüfe sie, dann *Datei → Als PDF speichern* unter dem Namen
-   **`cv.pdf`** direkt in diesen Ordner (`personal-website`).
-   Die Uni-Mail steht noch in der Kopfzeile. Lösch sie, falls du sie nicht öffentlich willst.
-3. **Texte gegenlesen**: Ich habe alles aus deinem CV übernommen und gekürzt. Prüf vor allem
-   den Intro-Absatz und den Thesis-Text, ob sie nach dir klingen.
+`cv.pdf` ist aus `Desktop/Bewerbungsunterlagen aktuell/Lebenslauf/00_AKTUELLE VORLAGEN/LF_CV_Website_public.docx`
+exportiert, einer Kopie deines CVs **ohne Telefonnummer und Adresse**. Wenn du den CV änderst:
+in Word öffnen, *Datei → Als PDF speichern* als `cv.pdf` in diesen Ordner, dann committen und pushen.
+
+## Noch offen
+
+- **LinkedIn**: unter `CONTACT` in `index.html` als weiteres `<li>` ergänzen.
+- **Texte gegenlesen**: vor allem Intro und Thesis-Text.
 
 ## Mit AI an der Seite arbeiten: gute Wünsche formulieren
 
@@ -75,12 +74,16 @@ git add -A && git commit -m "Kontaktdaten eingetragen"
 
 speichert einen neuen Speicherpunkt.
 
-## Veröffentlichen (wenn du so weit bist)
+## Online
 
-Sag einfach Bescheid: „Stell die Website online.“ Dann lege ich ein öffentliches GitHub-Repository
-`lfulda13-png.github.io` an und schalte GitHub Pages ein. Ein paar Minuten später ist die Seite
-unter **https://lfulda13-png.github.io** erreichbar. Danach reicht für jede Änderung ein Commit plus
-`git push`.
+Die Seite ist live unter **https://lfulda13-png.github.io**. Der Code liegt im öffentlichen
+Repository `lfulda13-png/lfulda13-png.github.io`. Für jede Änderung: committen, dann
+
+```bash
+git push
+```
+
+Nach ca. 1 Minute ist die neue Version online.
 
 ## Ideen für später
 
