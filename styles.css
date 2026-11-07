@@ -1,0 +1,188 @@
+/* =========================================================
+   styles.css – das gesamte Aussehen der Website
+   Aufbau:
+   1. Farben & Schriften (Design-Tokens)  ← hier änderst du den Look
+   2. Grundlagen
+   3. Kopfzeile & Navigation
+   4. Intro (Hero)
+   5. Abschnitte, Zeitleiste, Projekt, Karten
+   6. Fußzeile
+   7. Handy-Anpassungen
+   ========================================================= */
+
+/* ---------- 1. Farben & Schriften ---------- */
+:root {
+  /* Systemschriften: laden sofort und senden keine Daten an Google (DSGVO) */
+  --font-serif: "Iowan Old Style", "Palatino Linotype", Palatino, Charter, Georgia, serif;
+  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  --bg: #fbfaf7;          /* Hintergrund: warmes Papierweiß */
+  --surface: #ffffff;     /* Karten */
+  --text: #1d1f22;        /* Haupttext */
+  --muted: #5d636b;       /* Nebentext (Daten, Organisationen) */
+  --line: #e4e1da;        /* Trennlinien */
+  --accent: #1f4e5f;      /* Akzentfarbe: gedecktes Petrol */
+  --accent-soft: #e6eef0;
+  --todo: #b3261e;        /* markiert Platzhalter, die du noch ersetzen musst */
+
+  --max: 46rem;           /* maximale Textbreite */
+  --radius: 6px;
+}
+
+/* Dark Mode: automatisch nach Systemeinstellung … */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #15181b;
+    --surface: #1c2024;
+    --text: #e8e6e1;
+    --muted: #a1a7ae;
+    --line: #2d3338;
+    --accent: #8cc4d6;
+    --accent-soft: #1f2d33;
+    --todo: #ff8a80;
+  }
+}
+/* … oder manuell über den Knopf oben rechts */
+:root[data-theme="dark"] {
+  --bg: #15181b;
+  --surface: #1c2024;
+  --text: #e8e6e1;
+  --muted: #a1a7ae;
+  --line: #2d3338;
+  --accent: #8cc4d6;
+  --accent-soft: #1f2d33;
+  --todo: #ff8a80;
+}
+
+/* ---------- 2. Grundlagen ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 { font-family: var(--font-serif); font-weight: 600; line-height: 1.2; margin: 0; }
+p { margin: 0 0 1rem; }
+a { color: var(--accent); text-underline-offset: 0.18em; }
+a:hover { text-decoration-thickness: 2px; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+
+.container { width: 100%; max-width: var(--max); margin: 0 auto; padding: 0 1.25rem; }
+
+.skip-link { position: absolute; left: -999px; top: 0; }
+.skip-link:focus { left: 1rem; top: 1rem; background: var(--surface); padding: .5rem 1rem; z-index: 10; }
+
+/* Platzhalter sichtbar machen, damit du sie nicht vergisst */
+.todo-link { color: var(--todo); text-decoration-style: wavy; }
+
+/* ---------- 3. Kopfzeile & Navigation ---------- */
+.site-header {
+  position: sticky; top: 0; z-index: 5;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+.header-inner { display: flex; align-items: center; gap: 1rem; height: 3.5rem; }
+.logo {
+  font-family: var(--font-serif); font-weight: 700; font-size: 1.15rem;
+  color: var(--text); text-decoration: none; letter-spacing: .02em;
+}
+nav { margin-left: auto; overflow-x: auto; }
+.nav-list { display: flex; gap: 1.25rem; list-style: none; margin: 0; padding: 0; }
+.nav-list a { color: var(--muted); text-decoration: none; font-size: .95rem; white-space: nowrap; }
+.nav-list a:hover, .nav-list a.active { color: var(--text); }
+
+.theme-toggle {
+  background: none; border: 1px solid var(--line); color: var(--text);
+  width: 2.25rem; height: 2.25rem; border-radius: 50%; cursor: pointer; font-size: 1rem;
+  flex-shrink: 0;
+}
+.theme-toggle:hover { border-color: var(--accent); }
+
+/* ---------- 4. Intro ---------- */
+.hero { padding-top: 5rem; padding-bottom: 3.5rem; }
+.eyebrow {
+  color: var(--accent); font-size: .85rem; font-weight: 600;
+  letter-spacing: .08em; text-transform: uppercase; margin-bottom: .75rem;
+}
+.hero h1 { font-size: clamp(2.6rem, 8vw, 3.75rem); margin-bottom: 1.25rem; }
+.lead { font-size: 1.175rem; color: var(--text); }
+.hero .lead { max-width: 38rem; }
+
+.actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.75rem; }
+.button {
+  display: inline-block; padding: .65rem 1.2rem; border-radius: var(--radius);
+  border: 1px solid var(--line); color: var(--text); text-decoration: none; font-weight: 500;
+}
+.button:hover { border-color: var(--accent); }
+.button-primary { background: var(--accent); border-color: var(--accent); color: var(--bg); }
+.button-primary:hover { filter: brightness(1.1); }
+
+/* ---------- 5. Abschnitte ---------- */
+.section { padding-top: 3rem; padding-bottom: 3rem; border-top: 1px solid var(--line); }
+.section h2 { font-size: 1.75rem; margin-bottom: 1.75rem; }
+.section h3 { font-size: 1.15rem; margin-bottom: .35rem; }
+.prose p:last-child { margin-bottom: 0; }
+
+/* Zeitleiste: Datum links, Inhalt rechts */
+.timeline { list-style: none; margin: 0; padding: 0; }
+.timeline li {
+  display: grid; grid-template-columns: 9.5rem 1fr; gap: 1.25rem;
+  padding: 1.1rem 0; border-bottom: 1px dashed var(--line);
+}
+.timeline li:last-child { border-bottom: none; }
+.timeline p { margin: 0; color: var(--muted); }
+.timeline .when { font-size: .9rem; padding-top: .15rem; font-variant-numeric: tabular-nums; }
+.org { font-family: var(--font-sans); font-weight: 400; font-size: 1rem; color: var(--muted); }
+
+/* Projekt */
+.project {
+  background: var(--surface); border: 1px solid var(--line);
+  border-left: 3px solid var(--accent); border-radius: var(--radius); padding: 1.75rem;
+}
+.project h3 { font-size: 1.4rem; margin-bottom: 1rem; }
+.tag {
+  display: inline-block; background: var(--accent-soft); color: var(--accent);
+  font-size: .8rem; font-weight: 600; padding: .15rem .6rem; border-radius: 999px;
+}
+.facts { display: flex; flex-wrap: wrap; gap: 1.5rem 2.5rem; margin: 1.5rem 0 0; }
+.facts dt { font-size: .8rem; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+.facts dd { margin: 0; font-weight: 500; }
+
+/* Karten für Engagement */
+.cards {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr)); gap: 1rem;
+}
+.cards li {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 1.25rem;
+}
+.cards p { margin: 0; color: var(--muted); font-size: .95rem; }
+
+/* Kontakt */
+.contact-list { list-style: none; padding: 0; margin: 1rem 0 0; display: grid; gap: .5rem; }
+
+/* ---------- 6. Fußzeile ---------- */
+.site-footer { border-top: 1px solid var(--line); padding: 2rem 0 3rem; margin-top: 2rem; }
+.site-footer p { margin: 0; color: var(--muted); font-size: .9rem; }
+
+/* ---------- 7. Handy ---------- */
+@media (max-width: 640px) {
+  body { font-size: 1rem; }
+  .container { padding: 0 1rem; }
+  .hero { padding-top: 3rem; }
+  .nav-list { gap: 1rem; }
+  .nav-list li:nth-child(4) { display: none; } /* "Education" ausblenden, damit die Leiste passt */
+  .timeline li { grid-template-columns: 1fr; gap: .25rem; }
+  .project { padding: 1.25rem; }
+}
